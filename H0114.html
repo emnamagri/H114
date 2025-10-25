@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>H114 Exercise - Multimodal LLM Test</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f7f7f7;
+    }
+
+    /* HEADER */
+    header {
+        background: linear-gradient(to right, #8B0000, #000);
+        color: white;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    header img {
+        width: 60px;
+        height: 60px;
+        border-radius: 10px;
+    }
+
+    header h1 {
+        font-size: 20px;
+        max-width: 700px;
+        line-height: 1.4;
+    }
+
+    /* CONTACT FORM */
+    .contact-container {
+        width: 380px;
+        margin: 40px auto;
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        position: relative;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    /* ❌ BUG : Wrong color and wrong position */
+    #externalSendBtn {
+        background-color: green; /* should be red */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        position: absolute;
+        top: 20px; /* should be bottom-right */
+        left: 20px;
+    }
+
+    .bug-note {
+        text-align: center;
+        color: red;
+        margin-top: 80px;
+        font-weight: bold;
+    }
+
+    /* FOOTER */
+    footer {
+        text-align: center;
+        background-color: #111;
+        color: #ccc;
+        padding: 15px;
+        font-size: 14px;
+        margin-top: 40px;
+    }
+
+    /* Confirmation message */
+    #confirmation {
+        text-align: center;
+        color: green;
+        font-weight: bold;
+        display: none;
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <img src="gomycode.png" alt="Logo">
+    <h1>H114: Review and Execution of a Given Prompt for a Testing Task Using a Multimodal LLM Model</h1>
+</header>
+
+<div class="contact-container">
+    <h2>Contact Us</h2>
+
+    <form id="contactForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" placeholder="Write your message" required></textarea>
+    </form>
+
+    <!-- External button outside the form -->
+    <button id="externalSendBtn" type="button">Send</button>
+
+    <p id="confirmation">✅ Your message has been successfully sent!</p>
+</div>
+
+<p class="bug-note">
+</p>
+
+<footer>
+    Emna Magri — QA / ISTQB Instructor
+</footer>
+
+<script>
+    // ✅ Script for external button submission
+    document.getElementById("externalSendBtn").addEventListener("click", function() {
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        if (!name || !email || !message) {
+            alert("⚠️ Please fill in all fields before sending.");
+            return;
+        }
+
+        // Simulate form submission
+        document.getElementById("confirmation").style.display = "block";
+
+        // Optionally clear fields
+        document.getElementById("contactForm").reset();
+
+        // Hide confirmation after few seconds
+        setTimeout(() => {
+            document.getElementById("confirmation").style.display = "none";
+        }, 4000);
+    });
+</script>
+
+</body>
+</html>
